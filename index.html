@@ -130,7 +130,7 @@
             to { opacity: 1; }
         }
         .hero-bg {
-            background-image: url('assests/download.jpg');
+            background-image: url('assets/download.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -185,22 +185,45 @@
                 transform: translateX(0);
             }
         }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+            .nav-text {
+                font-size: 1.5rem;
+            }
+            .logo-icon {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-fenix-black">
     <!-- Navigation Bar -->
     <nav class="fixed w-full top-0 z-50 navbar-glass">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="flex justify-between items-center h-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center h-20 md:h-24">
                 <!-- Logo Section -->
                 <div class="flex-shrink-0">
-                    <div class="logo-container flex items-center space-x-4 cursor-pointer">
-                        <div class="logo-icon w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg">
-                            <span class="text-white font-black text-xl">F</span>
+                    <div class="logo-container flex items-center space-x-2 md:space-x-4 cursor-pointer">
+                        <div class="logo-icon w-10 h-10 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-black text-lg md:text-xl">F</span>
                         </div>
                         <div class="flex flex-col">
-                            <h1 class="nav-text text-3xl font-black tracking-tight">FenixeduSystem</h1>
-                            <span class="text-xs text-gray-500 font-medium tracking-wider">EDUCATIONAL TECHNOLOGY</span>
+                            <h1 class="nav-text text-xl md:text-3xl font-black tracking-tight">FenixeduSystem</h1>
+                            <span class="text-xs text-gray-500 font-medium tracking-wider hidden sm:block">EDUCATIONAL TECHNOLOGY</span>
                         </div>
                     </div>
                 </div>
@@ -223,30 +246,24 @@
                     </div>
                 </div>
                 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button class="mobile-menu-btn p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 hover:bg-fenix-gold/10 transition-all duration-300">
-                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
+
             </div>
         </div>
+
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg pt-24 pb-20 px-4 min-h-screen flex items-center relative">
+    <section class="hero-bg pt-20 md:pt-24 pb-16 md:pb-20 px-4 min-h-screen flex items-center relative">
         <div class="max-w-7xl mx-auto w-full relative z-10">
-            <div class="text-center space-y-8">
-                <h1 class="text-6xl lg:text-8xl font-bold leading-tight">
+            <div class="text-center space-y-6 md:space-y-8">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-tight">
                     <span class="animate-from-left inline-block text-fenix-gold drop-shadow-2xl">Fenix</span><span class="animate-zoom-in inline-block text-fenix-gold drop-shadow-2xl">edu</span><span class="animate-from-right inline-block text-fenix-gold drop-shadow-2xl">System</span>
                 </h1>
-                <p class="text-2xl lg:text-3xl text-white font-light max-w-4xl mx-auto leading-relaxed drop-shadow-lg" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-light max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-4" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
                     Revolutionizing Learning with
                     <span class="text-white font-semibold">AI-Powered Education</span>
                 </p>
-                <p class="text-lg text-white max-w-3xl mx-auto drop-shadow-md" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+                <p class="text-base md:text-lg text-white max-w-3xl mx-auto drop-shadow-md px-4" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
                     FenixeduSystem leverages cutting-edge artificial intelligence to create personalized and adaptive learning experiences for every student, unlocking their full potential.
                 </p>
             </div>
@@ -270,7 +287,7 @@
                         <i class="fas fa-rocket text-white text-3xl"></i>
                     </div>
                 </div>
-                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-fenix-gold via-yellow-400 to-fenix-gold bg-clip-text text-transparent mb-6 tracking-tight">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-fenix-gold via-yellow-400 to-fenix-gold bg-clip-text text-transparent mb-6 tracking-tight">
                     FENIX<span class="text-white">EDU</span>SYSTEM
                 </h2>
                 <div class="w-32 h-2 bg-gradient-to-r from-transparent via-fenix-gold to-transparent mx-auto rounded-full mb-6"></div>
@@ -280,7 +297,7 @@
             </div>
             
             <!-- Main Content Grid -->
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                 <!-- Left Content -->
                 <div class="space-y-10" data-aos="fade-right" data-aos-duration="1000">
                     <div class="relative">
@@ -299,11 +316,11 @@
                     </div>
                     
                     <!-- Power Stats -->
-                    <div class="grid grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="group relative overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-br from-fenix-gold/10 to-yellow-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                            <div class="relative p-6 text-center border border-fenix-gold/20 rounded-2xl backdrop-blur-sm hover:border-fenix-gold/40 transition-all duration-300">
-                                <div class="text-4xl font-black text-fenix-gold mb-2">1000+</div>
+                            <div class="relative p-4 md:p-6 text-center border border-fenix-gold/20 rounded-2xl backdrop-blur-sm hover:border-fenix-gold/40 transition-all duration-300">
+                                <div class="text-3xl md:text-4xl font-black text-fenix-gold mb-2">1000+</div>
                                 <div class="text-gray-400 text-sm font-medium">SCHOOLS</div>
                                 <div class="text-gray-500 text-xs">Transformed</div>
                             </div>
@@ -311,8 +328,8 @@
                         
                         <div class="group relative overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-fenix-blue/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                            <div class="relative p-6 text-center border border-blue-500/20 rounded-2xl backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300">
-                                <div class="text-4xl font-black text-blue-400 mb-2">100K+</div>
+                            <div class="relative p-4 md:p-6 text-center border border-blue-500/20 rounded-2xl backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300">
+                                <div class="text-3xl md:text-4xl font-black text-blue-400 mb-2">100K+</div>
                                 <div class="text-gray-400 text-sm font-medium">STUDENTS</div>
                                 <div class="text-gray-500 text-xs">Empowered</div>
                             </div>
@@ -320,8 +337,8 @@
                         
                         <div class="group relative overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-                            <div class="relative p-6 text-center border border-purple-500/20 rounded-2xl backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
-                                <div class="text-4xl font-black text-purple-400 mb-2">50+</div>
+                            <div class="relative p-4 md:p-6 text-center border border-purple-500/20 rounded-2xl backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
+                                <div class="text-3xl md:text-4xl font-black text-purple-400 mb-2">50+</div>
                                 <div class="text-gray-400 text-sm font-medium">COUNTRIES</div>
                                 <div class="text-gray-500 text-xs">Worldwide</div>
                             </div>
@@ -338,7 +355,7 @@
                         
                         <!-- Main Image -->
                         <div class="relative overflow-hidden rounded-3xl border border-fenix-gold/30 shadow-2xl">
-                            <img src="assests/About.jpg" alt="FenixeduSystem - Future of Education" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assets/About.jpg" alt="FenixeduSystem - Future of Education" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <!-- Overlay Gradients -->
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-fenix-gold/20"></div>
@@ -379,7 +396,7 @@
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Epic Header -->
             <div class="text-center mb-20" data-aos="zoom-in" data-aos-duration="1000">
-                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-fenix-blue via-blue-400 to-fenix-blue bg-clip-text text-transparent mb-6 tracking-tight">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-fenix-blue via-blue-400 to-fenix-blue bg-clip-text text-transparent mb-6 tracking-tight">
                     INTERACTIVE<span class="text-gray-800"> FLAT </span>PANEL
                 </h2>
                 <div class="w-32 h-2 bg-gradient-to-r from-transparent via-fenix-blue to-transparent mx-auto rounded-full mb-6"></div>
@@ -397,7 +414,7 @@
                         <div class="absolute -inset-4 bg-gradient-to-r from-fenix-blue/20 to-blue-500/20 rounded-3xl blur-xl animate-pulse"></div>
                         
                         <div class="relative overflow-hidden rounded-3xl border border-fenix-blue/30 shadow-2xl">
-                            <img src="assests/panel.jpg" alt="Interactive Flat Panel" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assets/panel.jpg" alt="Interactive Flat Panel" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-fenix-blue/20"></div>
                             <div class="absolute top-6 right-6 w-16 h-16 bg-fenix-blue/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-fenix-blue/50 animate-bounce">
@@ -497,7 +514,7 @@
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Epic Header -->
             <div class="text-center mb-20" data-aos="zoom-in" data-aos-duration="1000">
-                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-blue-500 via-indigo-400 to-blue-500 bg-clip-text text-transparent mb-6 tracking-tight">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-blue-500 via-indigo-400 to-blue-500 bg-clip-text text-transparent mb-6 tracking-tight">
                     SMART<span class="text-gray-800"> PROJECTOR </span>SYSTEM
                 </h2>
                 <div class="w-32 h-2 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto rounded-full mb-6"></div>
@@ -578,7 +595,7 @@
                         <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-3xl blur-xl animate-pulse"></div>
                         
                         <div class="relative overflow-hidden rounded-3xl border border-blue-500/30 shadow-2xl">
-                            <img src="assests/Smart-projector.jpg" alt="Smart Projector System" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assets/Smart-projector.jpg" alt="Smart Projector System" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-blue-500/20"></div>
                             <div class="absolute top-6 right-6 w-16 h-16 bg-blue-500/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-blue-500/50 animate-bounce">
@@ -615,7 +632,7 @@
         <div class="max-w-7xl mx-auto relative z-10">
             <!-- Epic Header -->
             <div class="text-center mb-20" data-aos="zoom-in" data-aos-duration="1000">
-                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-indigo-500 via-purple-400 to-indigo-500 bg-clip-text text-transparent mb-6 tracking-tight">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-indigo-500 via-purple-400 to-indigo-500 bg-clip-text text-transparent mb-6 tracking-tight">
                     MINI<span class="text-gray-800"> THEATRE </span>SETUP
                 </h2>
                 <div class="w-32 h-2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent mx-auto rounded-full mb-6"></div>
@@ -633,7 +650,7 @@
                         <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl animate-pulse"></div>
                         
                         <div class="relative overflow-hidden rounded-3xl border border-indigo-500/30 shadow-2xl">
-                            <img src="assests/mini-theatre.jpg" alt="Mini Theatre Setup" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assets/mini-theatre.jpg" alt="Mini Theatre Setup" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-indigo-500/20"></div>
                             <div class="absolute top-6 right-6 w-16 h-16 bg-indigo-500/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-indigo-500/50 animate-bounce">
@@ -724,7 +741,7 @@
                         <span class="text-white font-black text-2xl">F</span>
                     </div>
                 </div>
-                <h2 class="text-5xl lg:text-6xl font-black bg-gradient-to-r from-fenix-gold via-yellow-400 to-fenix-gold bg-clip-text text-transparent mb-4 tracking-tight">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-fenix-gold via-yellow-400 to-fenix-gold bg-clip-text text-transparent mb-4 tracking-tight">
                     FENIXEDUSYSTEM
                 </h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-fenix-gold to-transparent mx-auto rounded-full mb-6"></div>
@@ -734,7 +751,7 @@
             </div>
             
             <!-- Main Content -->
-            <div class="grid lg:grid-cols-4 gap-12 mb-16">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-16">
                 <!-- Company Info -->
                 <div class="lg:col-span-2 space-y-8" data-aos="fade-right" data-aos-duration="1000">
                     <div class="space-y-6">
@@ -748,7 +765,7 @@
                     </div>
                     
                     <!-- Social Links -->
-                    <div class="flex space-x-4">
+                    <div class="flex flex-wrap gap-4">
                         <a href="#" class="group relative w-14 h-14 bg-gradient-to-br from-fenix-gold/20 to-fenix-blue/20 rounded-2xl flex items-center justify-center border border-fenix-gold/30 hover:border-fenix-gold/60 transition-all duration-500 hover:scale-110">
                             <i class="fab fa-facebook-f text-fenix-gold group-hover:text-white transition-colors duration-300"></i>
                             <div class="absolute inset-0 bg-fenix-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -837,9 +854,9 @@
             <!-- Bottom Section -->
             <div class="border-t border-fenix-gold/20 pt-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <p class="text-gray-400 text-center md:text-left">
+                    <p class="text-gray-400 text-center md:text-left text-sm md:text-base">
                         &copy; 2024 FenixeduSystem. All rights reserved. 
-                        <span class="text-fenix-gold font-medium">Transforming Education Through Technology.</span>
+                        <span class="text-fenix-gold font-medium block sm:inline">Transforming Education Through Technology.</span>
                     </p>
                     <div class="flex items-center space-x-2">
                         <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse"></div>
@@ -853,13 +870,48 @@
     </footer>
 
     <script>
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        
+        // Close mobile menu when clicking on nav links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
@@ -894,6 +946,13 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.8s ease-out';
             observer.observe(el);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
         });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
