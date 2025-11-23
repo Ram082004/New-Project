@@ -12,7 +12,8 @@
                 extend: {
                     colors: {
                         'fenix-blue': '#0b2c75',
-                        'fenix-black': '#0D0D0D'
+                        'fenix-black': '#0D0D0D',
+                        'fenix-gold': '#EFBF04'
                     }
                 }
             }
@@ -24,27 +25,80 @@
         .navbar-glass {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(11, 44, 117, 0.1);
+            border-bottom: 1px solid rgba(239, 191, 4, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         .nav-link {
             position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        .nav-link::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(11, 44, 117, 0.1), transparent);
-            transition: left 0.5s;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #EFBF04, #0b2c75);
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
         }
-        .nav-link:hover::before {
-            left: 100%;
+        .nav-link:hover::after {
+            width: 100%;
         }
         .nav-link:hover {
+            color: #EFBF04;
             transform: translateY(-2px);
+        }
+        .logo-container {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-icon {
+            background: linear-gradient(135deg, #EFBF04, #0b2c75);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        .logo-container:hover .logo-icon::before {
+            opacity: 1;
+            animation: shine 0.6s ease-in-out;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        .nav-text {
+            background: linear-gradient(135deg, #EFBF04, #0b2c75, #EFBF04);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         .glow-blue {
             box-shadow: 0 0 20px rgba(11, 44, 117, 0.3);
@@ -76,7 +130,7 @@
             to { opacity: 1; }
         }
         .hero-bg {
-            background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-image: url('assests/download.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -88,7 +142,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(13, 13, 13, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px);
+            pointer-events: none;
         }
         .animate-from-left {
             animation: slideFromLeft 1.5s ease-out;
@@ -133,25 +189,47 @@
 </head>
 <body class="bg-gray-50 text-fenix-black">
     <!-- Navigation Bar -->
-    <nav class="fixed w-full top-0 z-50 navbar-glass shadow-lg">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center h-20">
+    <nav class="fixed w-full top-0 z-50 navbar-glass">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo Section -->
                 <div class="flex-shrink-0">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-fenix-blue to-blue-600 rounded-xl flex items-center justify-center">
-                            <span class="text-white font-bold text-lg">F</span>
+                    <div class="logo-container flex items-center space-x-4 cursor-pointer">
+                        <div class="logo-icon w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-black text-xl">F</span>
                         </div>
-                        <h1 class="text-3xl font-bold bg-gradient-to-r from-fenix-blue to-blue-600 bg-clip-text text-transparent">FenixeduSystem</h1>
+                        <div class="flex flex-col">
+                            <h1 class="nav-text text-3xl font-black tracking-tight">FenixeduSystem</h1>
+                            <span class="text-xs text-gray-500 font-medium tracking-wider">EDUCATIONAL TECHNOLOGY</span>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- Navigation Links -->
                 <div class="hidden md:block">
-                    <div class="flex items-center space-x-2">
-                        <a href="#panel" class="nav-link text-fenix-black hover:text-fenix-blue px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-500 hover:bg-fenix-blue/5 hover:shadow-lg">Panel</a>
-                        <a href="#projector" class="nav-link text-fenix-black hover:text-fenix-blue px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-500 hover:bg-fenix-blue/5 hover:shadow-lg">Projector</a>
-                        <a href="#theatre" class="nav-link text-fenix-black hover:text-fenix-blue px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-500 hover:bg-fenix-blue/5 hover:shadow-lg">Mini Theatre</a>
-                        <a href="#about" class="nav-link text-fenix-black hover:text-fenix-blue px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-500 hover:bg-fenix-blue/5 hover:shadow-lg">About</a>
-                        <a href="#contact" class="nav-link bg-gradient-to-r from-fenix-blue to-blue-600 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">Contact</a>
+                    <div class="flex items-center space-x-3">
+                        <a href="#panel" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                            <span class="relative z-10">Panel</span>
+                        </a>
+                        <a href="#projector" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                            <span class="relative z-10">Projector</span>
+                        </a>
+                        <a href="#theatre" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                            <span class="relative z-10">Theatre</span>
+                        </a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                            <span class="relative z-10">About</span>
+                        </a>
                     </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="mobile-menu-btn p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200 hover:bg-fenix-gold/10 transition-all duration-300">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -162,45 +240,245 @@
         <div class="max-w-7xl mx-auto w-full relative z-10">
             <div class="text-center space-y-8">
                 <h1 class="text-6xl lg:text-8xl font-bold leading-tight">
-                    <span class="animate-from-left inline-block bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">Fenix</span><span class="animate-zoom-in inline-block bg-gradient-to-r from-blue-300 via-blue-200 to-white bg-clip-text text-transparent">edu</span><span class="animate-from-right inline-block bg-gradient-to-r from-blue-200 via-blue-100 to-white bg-clip-text text-transparent">System</span>
+                    <span class="animate-from-left inline-block text-fenix-gold drop-shadow-2xl">Fenix</span><span class="animate-zoom-in inline-block text-fenix-gold drop-shadow-2xl">edu</span><span class="animate-from-right inline-block text-fenix-gold drop-shadow-2xl">System</span>
                 </h1>
-                <p class="text-2xl lg:text-3xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed fade-in">
+                <p class="text-2xl lg:text-3xl text-white font-light max-w-4xl mx-auto leading-relaxed drop-shadow-lg" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
                     Revolutionizing Learning with
-                    <span class="text-blue-400 font-semibold">AI-Powered Education</span>
+                    <span class="text-white font-semibold">AI-Powered Education</span>
                 </p>
-                <p class="text-lg text-gray-400 max-w-3xl mx-auto fade-in">
+                <p class="text-lg text-white max-w-3xl mx-auto drop-shadow-md" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
                     FenixeduSystem leverages cutting-edge artificial intelligence to create personalized and adaptive learning experiences for every student, unlocking their full potential.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Panel Section -->
-    <section id="panel" class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="relative" data-aos="fade-right" data-aos-duration="1000">
-                    <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interactive Flat Panel" class="w-full h-96 object-cover rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="space-y-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div>
-                        <h2 class="text-4xl font-bold text-fenix-blue mb-6">Interactive Flat Panel</h2>
-                        <p class="text-gray-700 leading-relaxed text-xl">
-                            Boost productivity and engagement with our Interactive Flat Panel. Designed for modern classrooms and meeting rooms, it features a vibrant 4K touchscreen, multi-touch support, and seamless device connectivity. Collaborate in real time, annotate instantly, and share content effortlessly. Whether you're teaching, training, or presenting, this all-in-one solution transforms passive sessions into dynamic, interactive experiences—making communication clearer, teamwork stronger, and learning more effective. Experience smarter collaboration with every tap and touch.
-                        </p>
+    <!-- About FenixeduSystem Section -->
+    <section id="about" class="py-32 px-4 bg-gradient-to-br from-fenix-black via-gray-900 to-fenix-black relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-fenix-gold rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-fenix-blue rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Epic Header -->
+            <div class="text-center mb-20" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="relative inline-block mb-8">
+                    <div class="absolute inset-0 bg-fenix-gold/20 blur-2xl rounded-full animate-pulse"></div>
+                    <div class="relative w-24 h-24 bg-gradient-to-br from-fenix-gold to-yellow-600 rounded-2xl flex items-center justify-center shadow-2xl transform rotate-12 hover:rotate-0 transition-transform duration-500">
+                        <i class="fas fa-rocket text-white text-3xl"></i>
                     </div>
-                    <div class="grid grid-cols-3 gap-6">
-                        <div class="text-center p-6 bg-fenix-blue/5 rounded-2xl hover:bg-fenix-blue/10 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-shopping-cart text-fenix-blue text-3xl mb-3"></i>
-                            <p class="font-bold text-fenix-blue text-lg">Sales</p>
+                </div>
+                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-fenix-gold via-yellow-400 to-fenix-gold bg-clip-text text-transparent mb-6 tracking-tight">
+                    FENIX<span class="text-white">EDU</span>SYSTEM
+                </h2>
+                <div class="w-32 h-2 bg-gradient-to-r from-transparent via-fenix-gold to-transparent mx-auto rounded-full mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Where <span class="text-fenix-gold font-bold">Innovation</span> meets <span class="text-fenix-gold font-bold">Education</span>
+                </p>
+            </div>
+            
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-10" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="relative">
+                        <div class="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-fenix-gold to-transparent rounded-full"></div>
+                        <div class="pl-8 space-y-6">
+                            <h3 class="text-4xl font-bold text-white mb-6">
+                                Redefining <span class="text-fenix-gold">Educational Excellence</span>
+                            </h3>
+                            <p class="text-gray-300 text-lg leading-relaxed">
+                                We don't just create educational technology – we architect the future of learning. Our AI-powered solutions transform ordinary classrooms into extraordinary learning ecosystems where every student thrives.
+                            </p>
+                            <p class="text-gray-400 leading-relaxed">
+                                From Interactive Flat Panels that respond to touch like magic, to Smart Projectors that bring lessons to life, and Mini Theatres that immerse students in knowledge – we're not just changing education, we're revolutionizing it.
+                            </p>
                         </div>
-                        <div class="text-center p-6 bg-fenix-blue/5 rounded-2xl hover:bg-fenix-blue/10 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-tools text-fenix-blue text-3xl mb-3"></i>
-                            <p class="font-bold text-fenix-blue text-lg">Service</p>
+                    </div>
+                    
+                    <!-- Power Stats -->
+                    <div class="grid grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-fenix-gold/10 to-yellow-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 text-center border border-fenix-gold/20 rounded-2xl backdrop-blur-sm hover:border-fenix-gold/40 transition-all duration-300">
+                                <div class="text-4xl font-black text-fenix-gold mb-2">1000+</div>
+                                <div class="text-gray-400 text-sm font-medium">SCHOOLS</div>
+                                <div class="text-gray-500 text-xs">Transformed</div>
+                            </div>
                         </div>
-                        <div class="text-center p-6 bg-fenix-blue/5 rounded-2xl hover:bg-fenix-blue/10 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-shield-alt text-fenix-blue text-3xl mb-3"></i>
-                            <p class="font-bold text-fenix-blue text-lg">AMC</p>
+                        
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-fenix-blue/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 text-center border border-blue-500/20 rounded-2xl backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300">
+                                <div class="text-4xl font-black text-blue-400 mb-2">100K+</div>
+                                <div class="text-gray-400 text-sm font-medium">STUDENTS</div>
+                                <div class="text-gray-500 text-xs">Empowered</div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 text-center border border-purple-500/20 rounded-2xl backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
+                                <div class="text-4xl font-black text-purple-400 mb-2">50+</div>
+                                <div class="text-gray-400 text-sm font-medium">COUNTRIES</div>
+                                <div class="text-gray-500 text-xs">Worldwide</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Visual -->
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="relative group">
+                        <!-- Glow Effects -->
+                        <div class="absolute -inset-8 bg-gradient-to-r from-fenix-gold/30 via-transparent to-fenix-blue/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-fenix-gold/20 to-fenix-blue/20 rounded-3xl blur-xl animate-pulse"></div>
+                        
+                        <!-- Main Image -->
+                        <div class="relative overflow-hidden rounded-3xl border border-fenix-gold/30 shadow-2xl">
+                            <img src="assests/About.jpg" alt="FenixeduSystem - Future of Education" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            
+                            <!-- Overlay Gradients -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-fenix-gold/20"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-fenix-blue/20 via-transparent to-fenix-gold/20"></div>
+                            
+                            <!-- Floating Elements -->
+                            <div class="absolute top-6 right-6 w-16 h-16 bg-fenix-gold/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-fenix-gold/50 animate-bounce">
+                                <i class="fas fa-brain text-white text-xl"></i>
+                            </div>
+                            
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="bg-black/60 backdrop-blur-md rounded-2xl p-6 border border-fenix-gold/30">
+                                    <h4 class="text-2xl font-bold text-white mb-2">The Future is Now</h4>
+                                    <p class="text-gray-300 text-sm leading-relaxed">Transforming minds, one classroom at a time with cutting-edge AI technology</p>
+                                    <div class="flex items-center mt-4 space-x-2">
+                                        <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse"></div>
+                                        <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                        <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                                        <span class="text-fenix-gold text-xs font-medium ml-2">LIVE INNOVATION</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panel Section -->
+    <section id="panel" class="py-32 px-4 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-32 right-20 w-80 h-80 bg-fenix-blue rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-32 left-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Epic Header -->
+            <div class="text-center mb-20" data-aos="zoom-in" data-aos-duration="1000">
+                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-fenix-blue via-blue-400 to-fenix-blue bg-clip-text text-transparent mb-6 tracking-tight">
+                    INTERACTIVE<span class="text-gray-800"> FLAT </span>PANEL
+                </h2>
+                <div class="w-32 h-2 bg-gradient-to-r from-transparent via-fenix-blue to-transparent mx-auto rounded-full mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Touch the <span class="text-fenix-blue font-bold">Future</span> of Education
+                </p>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Visual -->
+                <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="relative group">
+                        <div class="absolute -inset-8 bg-gradient-to-r from-fenix-blue/30 via-transparent to-blue-500/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-fenix-blue/20 to-blue-500/20 rounded-3xl blur-xl animate-pulse"></div>
+                        
+                        <div class="relative overflow-hidden rounded-3xl border border-fenix-blue/30 shadow-2xl">
+                            <img src="assests/panel.jpg" alt="Interactive Flat Panel" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-fenix-blue/20"></div>
+                            <div class="absolute top-6 right-6 w-16 h-16 bg-fenix-blue/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-fenix-blue/50 animate-bounce">
+                                <i class="fas fa-hand-pointer text-white text-xl"></i>
+                            </div>
+                            
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="bg-black/60 backdrop-blur-md rounded-2xl p-6 border border-fenix-blue/30">
+                                    <h4 class="text-2xl font-bold text-white mb-2">4K Touch Revolution</h4>
+                                    <p class="text-gray-300 text-sm leading-relaxed">Multi-touch capabilities that respond to every gesture with precision</p>
+                                    <div class="flex items-center mt-4 space-x-2">
+                                        <div class="w-2 h-2 bg-fenix-blue rounded-full animate-pulse"></div>
+                                        <div class="w-2 h-2 bg-fenix-blue rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                        <div class="w-2 h-2 bg-fenix-blue rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                                        <span class="text-fenix-blue text-xs font-medium ml-2">ACTIVE LEARNING</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content -->
+                <div class="space-y-10" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="relative">
+                        <div class="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-fenix-blue to-transparent rounded-full"></div>
+                        <div class="pl-8 space-y-6">
+                            <h3 class="text-4xl font-bold text-gray-800 mb-6">
+                                Unleash <span class="text-fenix-blue">Interactive Power</span>
+                            </h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                Transform your classroom into a dynamic learning hub with our cutting-edge 4K touchscreen technology. Every touch, every gesture, every interaction becomes a gateway to knowledge.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Cards -->
+                    <div class="grid grid-cols-1 gap-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-fenix-blue/10 to-blue-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-fenix-blue/20 rounded-2xl backdrop-blur-sm hover:border-fenix-blue/40 transition-all duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-fenix-blue to-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-shopping-cart text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">SALES & INSTALLATION</h4>
+                                        <p class="text-gray-600 leading-relaxed">Professional setup with precision calibration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-blue-500/20 rounded-2xl backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-tools text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">TECHNICAL SUPPORT</h4>
+                                        <p class="text-gray-600 leading-relaxed">24/7 expert assistance and maintenance</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-indigo-500/20 rounded-2xl backdrop-blur-sm hover:border-indigo-500/40 transition-all duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">AMC PROTECTION</h4>
+                                        <p class="text-gray-600 leading-relaxed">Comprehensive maintenance contracts</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,60 +487,219 @@
     </section>
 
     <!-- Projector Section -->
-    <section id="projector" class="py-20 px-4 bg-gray-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 lg:order-1" data-aos="fade-right" data-aos-duration="1000">
-                    <div>
-                        <h2 class="text-4xl font-bold text-fenix-blue mb-6">Smart Projector System</h2>
-                        <p class="text-gray-700 leading-relaxed text-xl">
-                            Transform your classroom with our cutting-edge Smart Projector System. Featuring ultra-bright 4K resolution, wireless connectivity, and interactive capabilities, this advanced projection solution delivers crystal-clear visuals and seamless content sharing. With built-in AI enhancement, automatic keystone correction, and multi-device compatibility, educators can create immersive learning experiences that captivate students and enhance comprehension. Perfect for large classrooms, auditoriums, and training facilities.
-                        </p>
+    <section id="projector" class="py-32 px-4 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-500 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Epic Header -->
+            <div class="text-center mb-20" data-aos="zoom-in" data-aos-duration="1000">
+                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-blue-500 via-indigo-400 to-blue-500 bg-clip-text text-transparent mb-6 tracking-tight">
+                    SMART<span class="text-gray-800"> PROJECTOR </span>SYSTEM
+                </h2>
+                <div class="w-32 h-2 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto rounded-full mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Project <span class="text-blue-500 font-bold">Brilliance</span> Beyond Imagination
+                </p>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-10" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="relative">
+                        <div class="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-transparent rounded-full"></div>
+                        <div class="pl-8 space-y-6">
+                            <h3 class="text-4xl font-bold text-gray-800 mb-6">
+                                Crystal Clear <span class="text-blue-500">4K Vision</span>
+                            </h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                Experience ultra-bright 4K projection that brings every lesson to life. Our AI-enhanced image processing delivers crystal-clear presentations that captivate and inspire.
+                            </p>
+                        </div>
                     </div>
-                    <div class="grid grid-cols-3 gap-6">
-                        <div class="text-center p-6 bg-blue-50 rounded-2xl hover:bg-blue-100 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-shopping-cart text-blue-600 text-3xl mb-3"></i>
-                            <p class="font-bold text-blue-600 text-lg">Sales</p>
+                    
+                    <!-- Service Cards -->
+                    <div class="space-y-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-blue-500/20 rounded-2xl backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-shopping-cart text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">SALES & SETUP</h4>
+                                        <p class="text-gray-600 leading-relaxed">Professional installation with precision calibration and wireless configuration</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-center p-6 bg-blue-50 rounded-2xl hover:bg-blue-100 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-tools text-blue-600 text-3xl mb-3"></i>
-                            <p class="font-bold text-blue-600 text-lg">Service</p>
+                        
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-indigo-500/20 rounded-2xl backdrop-blur-sm hover:border-indigo-500/40 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-tools text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">SERVICE SUPPORT</h4>
+                                        <p class="text-gray-600 leading-relaxed">Round-the-clock technical assistance with rapid response guarantee</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-center p-6 bg-blue-50 rounded-2xl hover:bg-blue-100 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-shield-alt text-blue-600 text-3xl mb-3"></i>
-                            <p class="font-bold text-blue-600 text-lg">AMC</p>
+                        
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-purple-500/20 rounded-2xl backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">AMC PLANS</h4>
+                                        <p class="text-gray-600 leading-relaxed">Comprehensive maintenance coverage with priority service scheduling</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="relative lg:order-2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Projector System" class="w-full h-96 object-cover rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500">
+                
+                <!-- Right Visual -->
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="relative group">
+                        <div class="absolute -inset-8 bg-gradient-to-r from-blue-500/30 via-transparent to-indigo-500/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-3xl blur-xl animate-pulse"></div>
+                        
+                        <div class="relative overflow-hidden rounded-3xl border border-blue-500/30 shadow-2xl">
+                            <img src="assests/Smart-projector.jpg" alt="Smart Projector System" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-blue-500/20"></div>
+                            <div class="absolute top-6 right-6 w-16 h-16 bg-blue-500/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-blue-500/50 animate-bounce">
+                                <i class="fas fa-lightbulb text-white text-xl"></i>
+                            </div>
+                            
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="bg-black/60 backdrop-blur-md rounded-2xl p-6 border border-blue-500/30">
+                                    <h4 class="text-2xl font-bold text-white mb-2">Ultra-Bright 4K</h4>
+                                    <p class="text-gray-300 text-sm leading-relaxed">AI-enhanced projection with wireless connectivity and smart features</p>
+                                    <div class="flex items-center mt-4 space-x-2">
+                                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                                        <span class="text-blue-400 text-xs font-medium ml-2">SMART PROJECTION</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Theatre Section -->
-    <section id="theatre" class="py-20 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="theatre" class="py-32 px-4 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-32 right-20 w-80 h-80 bg-indigo-500 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-32 left-20 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Epic Header -->
+            <div class="text-center mb-20" data-aos="zoom-in" data-aos-duration="1000">
+                <h2 class="text-6xl lg:text-7xl font-black bg-gradient-to-r from-indigo-500 via-purple-400 to-indigo-500 bg-clip-text text-transparent mb-6 tracking-tight">
+                    MINI<span class="text-gray-800"> THEATRE </span>SETUP
+                </h2>
+                <div class="w-32 h-2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent mx-auto rounded-full mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Immerse in <span class="text-indigo-500 font-bold">Cinematic</span> Learning
+                </p>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Visual -->
                 <div class="relative" data-aos="fade-right" data-aos-duration="1000">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mini Theatre Setup" class="w-full h-96 object-cover rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="space-y-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div>
-                        <h2 class="text-4xl font-bold text-fenix-blue mb-6">Mini Theatre Setup</h2>
-                        <p class="text-gray-700 leading-relaxed text-xl">
-                            Create an immersive cinematic learning environment with our Mini Theatre Setup. This comprehensive solution includes premium surround sound systems, high-definition projection, comfortable seating arrangements, and ambient lighting control. Designed for educational institutions, this setup transforms ordinary spaces into engaging multimedia learning centers. Perfect for presentations, educational films, virtual field trips, and interactive learning sessions that require a captivating audiovisual experience.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="text-center p-6 bg-indigo-50 rounded-2xl hover:bg-indigo-100 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-shopping-cart text-indigo-600 text-3xl mb-3"></i>
-                            <p class="font-bold text-indigo-600 text-lg">Sales</p>
+                    <div class="relative group">
+                        <div class="absolute -inset-8 bg-gradient-to-r from-indigo-500/30 via-transparent to-purple-500/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
+                        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl animate-pulse"></div>
+                        
+                        <div class="relative overflow-hidden rounded-3xl border border-indigo-500/30 shadow-2xl">
+                            <img src="assests/mini-theatre.jpg" alt="Mini Theatre Setup" class="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-indigo-500/20"></div>
+                            <div class="absolute top-6 right-6 w-16 h-16 bg-indigo-500/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-indigo-500/50 animate-bounce">
+                                <i class="fas fa-theater-masks text-white text-xl"></i>
+                            </div>
+                            
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="bg-black/60 backdrop-blur-md rounded-2xl p-6 border border-indigo-500/30">
+                                    <h4 class="text-2xl font-bold text-white mb-2">Cinematic Experience</h4>
+                                    <p class="text-gray-300 text-sm leading-relaxed">Premium surround sound with HD projection and ergonomic seating</p>
+                                    <div class="flex items-center mt-4 space-x-2">
+                                        <div class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
+                                        <div class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                        <div class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                                        <span class="text-indigo-400 text-xs font-medium ml-2">IMMERSIVE LEARNING</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-center p-6 bg-indigo-50 rounded-2xl hover:bg-indigo-100 hover:scale-105 transition-all duration-300">
-                            <i class="fas fa-tools text-indigo-600 text-3xl mb-3"></i>
-                            <p class="font-bold text-indigo-600 text-lg">Service</p>
+                    </div>
+                </div>
+                
+                <!-- Right Content -->
+                <div class="space-y-10" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="relative">
+                        <div class="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-indigo-500 to-transparent rounded-full"></div>
+                        <div class="pl-8 space-y-6">
+                            <h3 class="text-4xl font-bold text-gray-800 mb-6">
+                                Create <span class="text-indigo-500">Immersive Worlds</span>
+                            </h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                Transform your space into a cinematic learning environment. Premium surround sound, HD projection, and ergonomic seating create the perfect atmosphere for immersive education.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Cards -->
+                    <div class="space-y-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-indigo-500/20 rounded-2xl backdrop-blur-sm hover:border-indigo-500/40 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-shopping-cart text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">COMPLETE SALES PACKAGE</h4>
+                                        <p class="text-gray-600 leading-relaxed">End-to-end theatre setup with premium equipment and professional installation services</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                            <div class="relative p-6 border border-purple-500/20 rounded-2xl backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-tools text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">EXPERT SERVICE SUPPORT</h4>
+                                        <p class="text-gray-600 leading-relaxed">Dedicated technical support team ensuring optimal performance and user satisfaction</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -271,61 +708,146 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-fenix-black text-white py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-2">
-                    <h3 class="text-3xl font-bold text-white mb-4">FenixeduSystem</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Leading the future of educational technology with innovative solutions that transform learning experiences.
-                    </p>
+    <footer id="contact" class="relative bg-gradient-to-br from-fenix-black via-gray-900 to-fenix-black py-24 overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-10 w-96 h-96 bg-fenix-gold rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-80 h-80 bg-fenix-blue rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Epic Header -->
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <div class="relative inline-block mb-8">
+                    <div class="absolute inset-0 bg-fenix-gold/20 blur-2xl rounded-full animate-pulse"></div>
+                    <div class="relative w-20 h-20 bg-gradient-to-br from-fenix-gold to-yellow-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                        <span class="text-white font-black text-2xl">F</span>
+                    </div>
+                </div>
+                <h2 class="text-5xl lg:text-6xl font-black bg-gradient-to-r from-fenix-gold via-yellow-400 to-fenix-gold bg-clip-text text-transparent mb-4 tracking-tight">
+                    FENIXEDUSYSTEM
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-fenix-gold to-transparent mx-auto rounded-full mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Transforming <span class="text-fenix-gold font-bold">Education</span> Through <span class="text-fenix-gold font-bold">Innovation</span>
+                </p>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="grid lg:grid-cols-4 gap-12 mb-16">
+                <!-- Company Info -->
+                <div class="lg:col-span-2 space-y-8" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="space-y-6">
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            Leading the future of educational technology with cutting-edge AI-powered solutions that revolutionize learning experiences worldwide.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse"></div>
+                            <span class="text-fenix-gold text-sm font-medium tracking-wider">INNOVATION • EXCELLENCE • TRANSFORMATION</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
                     <div class="flex space-x-4">
-                        <a href="#" class="w-12 h-12 bg-fenix-blue rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300">
-                            <i class="fab fa-facebook-f"></i>
+                        <a href="#" class="group relative w-14 h-14 bg-gradient-to-br from-fenix-gold/20 to-fenix-blue/20 rounded-2xl flex items-center justify-center border border-fenix-gold/30 hover:border-fenix-gold/60 transition-all duration-500 hover:scale-110">
+                            <i class="fab fa-facebook-f text-fenix-gold group-hover:text-white transition-colors duration-300"></i>
+                            <div class="absolute inset-0 bg-fenix-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </a>
-                        <a href="#" class="w-12 h-12 bg-fenix-blue rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#" class="group relative w-14 h-14 bg-gradient-to-br from-fenix-gold/20 to-fenix-blue/20 rounded-2xl flex items-center justify-center border border-fenix-gold/30 hover:border-fenix-gold/60 transition-all duration-500 hover:scale-110">
+                            <i class="fab fa-twitter text-fenix-gold group-hover:text-white transition-colors duration-300"></i>
+                            <div class="absolute inset-0 bg-fenix-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </a>
-                        <a href="#" class="w-12 h-12 bg-fenix-blue rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="#" class="group relative w-14 h-14 bg-gradient-to-br from-fenix-gold/20 to-fenix-blue/20 rounded-2xl flex items-center justify-center border border-fenix-gold/30 hover:border-fenix-gold/60 transition-all duration-500 hover:scale-110">
+                            <i class="fab fa-linkedin-in text-fenix-gold group-hover:text-white transition-colors duration-300"></i>
+                            <div class="absolute inset-0 bg-fenix-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </a>
-                        <a href="#" class="w-12 h-12 bg-fenix-blue rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300">
-                            <i class="fab fa-instagram"></i>
+                        <a href="#" class="group relative w-14 h-14 bg-gradient-to-br from-fenix-gold/20 to-fenix-blue/20 rounded-2xl flex items-center justify-center border border-fenix-gold/30 hover:border-fenix-gold/60 transition-all duration-500 hover:scale-110">
+                            <i class="fab fa-instagram text-fenix-gold group-hover:text-white transition-colors duration-300"></i>
+                            <div class="absolute inset-0 bg-fenix-gold/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </a>
                     </div>
                 </div>
                 
-                <div>
-                    <h4 class="text-xl font-semibold mb-6 text-fenix-blue">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#panel" class="text-gray-300 hover:text-white transition-colors duration-300">Panel Setup</a></li>
-                        <li><a href="#projector" class="text-gray-300 hover:text-white transition-colors duration-300">Smart Projector</a></li>
-                        <li><a href="#theatre" class="text-gray-300 hover:text-white transition-colors duration-300">Mini Theatre</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                <!-- Quick Links -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h4 class="text-2xl font-bold text-fenix-gold mb-8 relative">
+                        Quick Links
+                        <div class="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-fenix-gold to-transparent rounded-full"></div>
+                    </h4>
+                    <ul class="space-y-4">
+                        <li><a href="#panel" class="group flex items-center space-x-3 text-gray-300 hover:text-fenix-gold transition-all duration-300">
+                            <div class="w-2 h-2 bg-fenix-gold/50 rounded-full group-hover:bg-fenix-gold transition-colors duration-300"></div>
+                            <span class="group-hover:translate-x-2 transition-transform duration-300">Interactive Panel</span>
+                        </a></li>
+                        <li><a href="#projector" class="group flex items-center space-x-3 text-gray-300 hover:text-fenix-gold transition-all duration-300">
+                            <div class="w-2 h-2 bg-fenix-gold/50 rounded-full group-hover:bg-fenix-gold transition-colors duration-300"></div>
+                            <span class="group-hover:translate-x-2 transition-transform duration-300">Smart Projector</span>
+                        </a></li>
+                        <li><a href="#theatre" class="group flex items-center space-x-3 text-gray-300 hover:text-fenix-gold transition-all duration-300">
+                            <div class="w-2 h-2 bg-fenix-gold/50 rounded-full group-hover:bg-fenix-gold transition-colors duration-300"></div>
+                            <span class="group-hover:translate-x-2 transition-transform duration-300">Mini Theatre</span>
+                        </a></li>
+                        <li><a href="#about" class="group flex items-center space-x-3 text-gray-300 hover:text-fenix-gold transition-all duration-300">
+                            <div class="w-2 h-2 bg-fenix-gold/50 rounded-full group-hover:bg-fenix-gold transition-colors duration-300"></div>
+                            <span class="group-hover:translate-x-2 transition-transform duration-300">About Us</span>
+                        </a></li>
                     </ul>
                 </div>
                 
-                <div>
-                    <h4 class="text-xl font-semibold mb-6 text-fenix-blue">Contact Info</h4>
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-phone text-fenix-blue"></i>
-                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                <!-- Contact Info -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h4 class="text-2xl font-bold text-fenix-gold mb-8 relative">
+                        Contact Info
+                        <div class="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-fenix-gold to-transparent rounded-full"></div>
+                    </h4>
+                    <div class="space-y-6">
+                        <div class="group flex items-start space-x-4 p-4 rounded-2xl border border-fenix-gold/20 hover:border-fenix-gold/40 hover:bg-fenix-gold/5 transition-all duration-300">
+                            <div class="w-12 h-12 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
+                                <i class="fas fa-phone text-fenix-gold"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Phone</p>
+                                <p class="text-white font-medium">+1 (555) 123-4567</p>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-envelope text-fenix-blue"></i>
-                            <span class="text-gray-300">info@fenixedusystem.com</span>
+                        
+                        <div class="group flex items-start space-x-4 p-4 rounded-2xl border border-fenix-gold/20 hover:border-fenix-gold/40 hover:bg-fenix-gold/5 transition-all duration-300">
+                            <div class="w-12 h-12 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
+                                <i class="fas fa-envelope text-fenix-gold"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Email</p>
+                                <p class="text-white font-medium">info@fenixedusystem.com</p>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-map-marker-alt text-fenix-blue"></i>
-                            <span class="text-gray-300">123 Education St, Tech City</span>
+                        
+                        <div class="group flex items-start space-x-4 p-4 rounded-2xl border border-fenix-gold/20 hover:border-fenix-gold/40 hover:bg-fenix-gold/5 transition-all duration-300">
+                            <div class="w-12 h-12 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
+                                <i class="fas fa-map-marker-alt text-fenix-gold"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400 text-sm">Address</p>
+                                <p class="text-white font-medium">123 Education St, Tech City</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2024 FenixeduSystem. All rights reserved. Transforming education through technology.</p>
+            <!-- Bottom Section -->
+            <div class="border-t border-fenix-gold/20 pt-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-gray-400 text-center md:text-left">
+                        &copy; 2024 FenixeduSystem. All rights reserved. 
+                        <span class="text-fenix-gold font-medium">Transforming Education Through Technology.</span>
+                    </p>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse"></div>
+                        <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                        <div class="w-2 h-2 bg-fenix-gold rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                        <span class="text-fenix-gold text-xs font-medium ml-2">POWERED BY INNOVATION</span>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
