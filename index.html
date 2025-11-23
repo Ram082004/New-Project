@@ -130,7 +130,7 @@
             to { opacity: 1; }
         }
         .hero-bg {
-            background-image: url('assets/download.jpg');
+            background-image: url('assests/download.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -355,7 +355,7 @@
                         
                         <!-- Main Image -->
                         <div class="relative overflow-hidden rounded-3xl border border-fenix-gold/30 shadow-2xl">
-                            <img src="assets/About.jpg" alt="FenixeduSystem - Future of Education" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assests/About.jpg" alt="FenixeduSystem - Future of Education" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <!-- Overlay Gradients -->
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-fenix-gold/20"></div>
@@ -414,7 +414,7 @@
                         <div class="absolute -inset-4 bg-gradient-to-r from-fenix-blue/20 to-blue-500/20 rounded-3xl blur-xl animate-pulse"></div>
                         
                         <div class="relative overflow-hidden rounded-3xl border border-fenix-blue/30 shadow-2xl">
-                            <img src="assets/panel.jpg" alt="Interactive Flat Panel" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assests/panel.jpg" alt="Interactive Flat Panel" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-fenix-blue/20"></div>
                             <div class="absolute top-6 right-6 w-16 h-16 bg-fenix-blue/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-fenix-blue/50 animate-bounce">
@@ -595,7 +595,7 @@
                         <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-3xl blur-xl animate-pulse"></div>
                         
                         <div class="relative overflow-hidden rounded-3xl border border-blue-500/30 shadow-2xl">
-                            <img src="assets/Smart-projector.jpg" alt="Smart Projector System" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assests/Smart-projector.jpg" alt="Smart Projector System" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-blue-500/20"></div>
                             <div class="absolute top-6 right-6 w-16 h-16 bg-blue-500/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-blue-500/50 animate-bounce">
@@ -650,7 +650,7 @@
                         <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl animate-pulse"></div>
                         
                         <div class="relative overflow-hidden rounded-3xl border border-indigo-500/30 shadow-2xl">
-                            <img src="assets/mini-theatre.jpg" alt="Mini Theatre Setup" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
+                            <img src="assests/mini-theatre.jpg" alt="Mini Theatre Setup" class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-1000">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-fenix-black/80 via-transparent to-indigo-500/20"></div>
                             <div class="absolute top-6 right-6 w-16 h-16 bg-indigo-500/90 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-indigo-500/50 animate-bounce">
@@ -870,37 +870,6 @@
     </footer>
 
     <script>
-        // Mobile menu functionality
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        mobileMenuToggle.addEventListener('click', openMobileMenu);
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-        
-        // Close mobile menu when clicking on nav links
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Close mobile menu when clicking outside
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                closeMobileMenu();
-            }
-        });
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -946,13 +915,6 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.8s ease-out';
             observer.observe(el);
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth >= 768) {
-                closeMobileMenu();
-            }
         });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
