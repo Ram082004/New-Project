@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - FenixeduSystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'fenix-blue': '#0b2c75',
+                        'fenix-black': '#0D0D0D',
+                        'fenix-gold': '#EFBF04'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #0b2c75 0%, #1e40af 50%, #0D0D0D 100%);
+        }
+        .service-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(11, 44, 117, 0.25);
+        }
+        .rental-badge {
+            background: linear-gradient(45deg, #EFBF04, #FFD700);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(239, 191, 4, 0.5); }
+            to { box-shadow: 0 0 30px rgba(239, 191, 4, 0.8); }
+        }
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-fenix-black/95 backdrop-blur-lg border-b border-fenix-gold/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-fenix-gold to-yellow-600 rounded-xl flex items-center justify-center">
+                        <span class="text-white font-black text-xl">F</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-fenix-gold">FenixeduSystem</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover:text-fenix-gold transition-colors">Home</a>
+                    <a href="product.html" class="text-white hover:text-fenix-gold transition-colors">Products</a>
+                    <a href="service.html" class="text-fenix-gold font-bold">Services</a>
+                    <a href="index.html#contact" class="bg-fenix-gold text-fenix-black px-6 py-2 rounded-lg font-bold hover:bg-yellow-500 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg pt-32 pb-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 right-10 w-96 h-96 bg-fenix-gold rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 left-10 w-80 h-80 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="floating-icon w-24 h-24 bg-fenix-gold rounded-full flex items-center justify-center mx-auto mb-8">
+                <i class="fas fa-handshake text-fenix-black text-3xl"></i>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6">
+                RENTAL <span class="text-fenix-gold">SERVICES</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                Flexible equipment rental solutions for events, temporary setups, and trial periods. No commitment, maximum impact.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <div class="bg-fenix-gold/20 backdrop-blur-sm rounded-2xl p-6 border border-fenix-gold/30">
+                    <h3 class="text-3xl font-bold text-fenix-gold">24/7</h3>
+                    <p class="text-white">Support</p>
+                </div>
+                <div class="bg-fenix-blue/20 backdrop-blur-sm rounded-2xl p-6 border border-fenix-blue/30">
+                    <h3 class="text-3xl font-bold text-blue-400">Flexible</h3>
+                    <p class="text-white">Terms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rental Services -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-fenix-blue mb-4">Equipment Rental Services</h2>
+                <p class="text-lg text-gray-600">Professional-grade equipment for short-term and long-term rentals</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Panel Rental -->
+                <div class="service-card rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+                    <div class="rental-badge absolute top-4 right-4 px-3 py-1 rounded-full">
+                        <span class="text-fenix-black font-bold text-sm">RENTAL</span>
+                    </div>
+                    <div class="w-20 h-20 bg-fenix-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tv text-fenix-blue text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-fenix-blue mb-4">Interactive Panel Rental</h3>
+                    <p class="text-gray-600 mb-6">Rent our premium 4K interactive panels for events, conferences, and temporary installations.</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Daily Rate</span>
+                            <span class="text-fenix-blue font-bold">$199/day</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Weekly Rate</span>
+                            <span class="text-fenix-blue font-bold">$999/week</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Monthly Rate</span>
+                            <span class="text-fenix-blue font-bold">$2,999/month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Free delivery & setup</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Technical support included</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Insurance coverage</li>
+                    </ul>
+                    
+                    <button class="w-full bg-fenix-blue text-white py-3 rounded-xl font-bold hover:bg-blue-800 transition-colors">
+                        Rent Now
+                    </button>
+                </div>
+
+                <!-- Projector Rental -->
+                <div class="service-card rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+                    <div class="rental-badge absolute top-4 right-4 px-3 py-1 rounded-full">
+                        <span class="text-fenix-black font-bold text-sm">RENTAL</span>
+                    </div>
+                    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-video text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-blue-600 mb-4">Smart Projector Rental</h3>
+                    <p class="text-gray-600 mb-6">High-brightness 4K projectors perfect for large venues and outdoor events.</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Daily Rate</span>
+                            <span class="text-blue-600 font-bold">$149/day</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Weekly Rate</span>
+                            <span class="text-blue-600 font-bold">$699/week</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Monthly Rate</span>
+                            <span class="text-blue-600 font-bold">$1,999/month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>6000 lumens brightness</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Wireless connectivity</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Professional calibration</li>
+                    </ul>
+                    
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors">
+                        Rent Now
+                    </button>
+                </div>
+
+                <!-- Theatre Rental -->
+                <div class="service-card rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+                    <div class="rental-badge absolute top-4 right-4 px-3 py-1 rounded-full">
+                        <span class="text-fenix-black font-bold text-sm">RENTAL</span>
+                    </div>
+                    <div class="w-20 h-20 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-theater-masks text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-indigo-600 mb-4">Mini Theatre Rental</h3>
+                    <p class="text-gray-600 mb-6">Complete portable theatre setup for immersive presentations and events.</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Daily Rate</span>
+                            <span class="text-indigo-600 font-bold">$499/day</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Weekly Rate</span>
+                            <span class="text-indigo-600 font-bold">$2,499/week</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Monthly Rate</span>
+                            <span class="text-indigo-600 font-bold">$7,999/month</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>7.1 surround sound system</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Professional lighting</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Comfortable seating</li>
+                    </ul>
+                    
+                    <button class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition-colors">
+                        Rent Now
+                    </button>
+                </div>
+
+                <!-- Event Package -->
+                <div class="service-card rounded-3xl p-8 border-2 border-fenix-gold bg-gradient-to-br from-fenix-gold/10 to-yellow-100 relative overflow-hidden">
+                    <div class="rental-badge absolute top-4 right-4 px-3 py-1 rounded-full">
+                        <span class="text-fenix-black font-bold text-sm">PACKAGE</span>
+                    </div>
+                    <div class="w-20 h-20 bg-fenix-gold/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-star text-fenix-gold text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-fenix-blue mb-4">Complete Event Package</h3>
+                    <p class="text-gray-600 mb-6">All-inclusive rental package for conferences, seminars, and large events.</p>
+                    
+                    <div class="bg-fenix-gold/20 p-4 rounded-xl mb-6">
+                        <div class="text-center">
+                            <span class="text-2xl font-bold text-fenix-blue">Custom Pricing</span>
+                            <p class="text-sm text-gray-600">Based on event requirements</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Multiple panels & projectors</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Audio/visual technician</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>24/7 on-site support</li>
+                    </ul>
+                    
+                    <button class="w-full bg-fenix-gold text-fenix-black py-3 rounded-xl font-bold hover:bg-yellow-500 transition-colors">
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Technical Support -->
+                <div class="service-card rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+                    <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-green-600 mb-4">Technical Support Service</h3>
+                    <p class="text-gray-600 mb-6">Professional technical support and maintenance for all rental equipment.</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Hourly Rate</span>
+                            <span class="text-green-600 font-bold">$99/hour</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Daily Support</span>
+                            <span class="text-green-600 font-bold">$599/day</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Remote diagnostics</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>On-site troubleshooting</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Equipment training</li>
+                    </ul>
+                    
+                    <button class="w-full bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition-colors">
+                        Book Support
+                    </button>
+                </div>
+
+                <!-- Installation Service -->
+                <div class="service-card rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
+                    <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-purple-600 mb-4">Installation & Setup</h3>
+                    <p class="text-gray-600 mb-6">Professional installation and configuration service for all rental equipment.</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Basic Setup</span>
+                            <span class="text-purple-600 font-bold">$199</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-medium">Advanced Setup</span>
+                            <span class="text-purple-600 font-bold">$399</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Professional mounting</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Network configuration</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>User training session</li>
+                    </ul>
+                    
+                    <button class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold hover:bg-purple-700 transition-colors">
+                        Book Installation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="bg-fenix-black py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Why Choose Our Rental Services?</h2>
+                <p class="text-xl text-gray-300">Flexible, reliable, and cost-effective solutions</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-fenix-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shipping-fast text-fenix-black text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Fast Delivery</h3>
+                    <p class="text-gray-400">Same-day delivery available in metro areas</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Fully Insured</h3>
+                    <p class="text-gray-400">Complete insurance coverage included</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">24/7 Support</h3>
+                    <p class="text-gray-400">Round-the-clock technical assistance</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dollar-sign text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Best Rates</h3>
+                    <p class="text-gray-400">Competitive pricing with flexible terms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-fenix-black text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-fenix-gold rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-40 h-40 bg-fenix-blue rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-2 transform hover:scale-105 transition-transform duration-300">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-fenix-gold to-yellow-600 rounded-xl flex items-center justify-center hover:rotate-12 transition-transform duration-300">
+                            <span class="text-white font-black text-xl">F</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-fenix-gold hover:text-yellow-400 transition-colors duration-300">FenixeduSystem</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed hover:text-white transition-colors duration-300">
+                        Leading provider of educational technology solutions. Transform your institution with our premium products.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-fenix-gold/20 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-fenix-gold/20 rounded-full flex items-center justify-center hover:bg-black hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fa-brands fa-x-twitter text-2xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-fenix-gold/20 rounded-full flex items-center justify-center hover:bg-pink-500 hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-fenix-gold/20 rounded-full flex items-center justify-center hover:bg-blue-700 hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="transform hover:translate-y-2 transition-transform duration-300">
+                    <h4 class="text-lg font-bold text-fenix-gold mb-4 hover:text-yellow-400 transition-colors duration-300">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-fenix-gold hover:translate-x-2 transition-all duration-300 inline-block">Home</a></li>
+                        <li><a href="product.html" class="text-gray-300 hover:text-fenix-gold hover:translate-x-2 transition-all duration-300 inline-block">Products</a></li>
+                        <li><a href="service.html" class="text-gray-300 hover:text-fenix-gold hover:translate-x-2 transition-all duration-300 inline-block">Services</a></li>
+                        <li><a href="index.html#about" class="text-gray-300 hover:text-fenix-gold hover:translate-x-2 transition-all duration-300 inline-block">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="transform hover:translate-y-2 transition-transform duration-300">
+                    <h4 class="text-lg font-bold text-fenix-gold mb-4 hover:text-yellow-400 transition-colors duration-300">Contact</h4>
+                    <div class="space-y-2">
+                        <p class="text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-phone text-fenix-gold mr-2 hover:scale-125 transition-transform duration-300"></i>+1 (555) 123-4567</p>
+                        <p class="text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-envelope text-fenix-gold mr-2 hover:scale-125 transition-transform duration-300"></i>sales@fenixedusystem.com</p>
+                        <p class="text-gray-300 hover:text-white transition-colors duration-300"><i class="fas fa-map-marker-alt text-fenix-gold mr-2 hover:scale-125 transition-transform duration-300"></i>123 Education St, Tech City</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 hover:text-fenix-gold transition-colors duration-300">&copy; 2024 FenixeduSystem. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add interactive animations
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) rotateY(5deg)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
