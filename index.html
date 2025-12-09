@@ -23,14 +23,14 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         .navbar-glass {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(13, 13, 13, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(239, 191, 4, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         .navbar-scrolled {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(13, 13, 13, 0.98);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         .nav-link {
@@ -217,36 +217,30 @@
             <div class="flex justify-between items-center h-20 md:h-24">
                 <!-- Logo Section -->
                 <div class="flex-shrink-0">
-                    <div class="logo-container flex items-center space-x-2 md:space-x-4 cursor-pointer">
-                        <div class="logo-icon w-10 h-10 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-lg">
-                            <span class="text-white font-black text-lg md:text-xl">F</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <h1 class="nav-text text-xl md:text-3xl font-black tracking-tight">FenixeduSystem</h1>
-                            <span class="text-xs text-gray-500 font-medium tracking-wider hidden sm:block">EDUCATIONAL TECHNOLOGY</span>
-                        </div>
+                    <div class="logo-container cursor-pointer">
+                        <img src="assests/fenixedusystem_logo.png" alt="FenixeduSystem Logo" class="h-13 md:h-13 w-auto object-contain">
                     </div>
                 </div>
                 
                 <!-- Navigation Links -->
                 <div class="hidden md:block">
                     <div class="flex items-center space-x-3">
-                        <a href="#panel" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                        <a href="#panel" class="nav-link text-white hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
                             <span class="relative z-10">Panel</span>
                         </a>
-                        <a href="#projector" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                        <a href="#projector" class="nav-link text-white hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
                             <span class="relative z-10">Projector</span>
                         </a>
-                        <a href="#theatre" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                        <a href="#theatre" class="nav-link text-white hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
                             <span class="relative z-10">Theatre</span>
                         </a>
-                        <a href="product.html" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                        <a href="product.html" class="nav-link text-white hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
                             <span class="relative z-10">Products</span>
                         </a>
-                        <a href="service.html" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                        <a href="service.html" class="nav-link text-white hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
                             <span class="relative z-10">Services</span>
                         </a>
-                        <a href="#about" class="nav-link text-gray-700 hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
+                        <a href="#about" class="nav-link text-white hover:text-fenix-gold px-8 py-4 text-sm font-bold tracking-wide uppercase transition-all duration-500">
                             <span class="relative z-10">About</span>
                         </a>
                     </div>
@@ -876,32 +870,34 @@
                     </h4>
                     <div class="space-y-6">
                         <div class="group flex items-start space-x-4 p-4 rounded-2xl border border-fenix-gold/20 hover:border-fenix-gold/40 hover:bg-fenix-gold/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
+                            <div class="w-12 h-12 flex-shrink-0 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
                                 <i class="fas fa-phone text-fenix-gold"></i>
                             </div>
-                            <div>
-                                <p class="text-gray-400 text-sm">Phone</p>
-                                <p class="text-white font-medium">+1 (555) 123-4567</p>
+                            <div class="flex-1">
+                                <p class="text-gray-400 text-sm mb-1">Phone</p>
+                                <p class="text-white font-medium text-sm">+91 93841 91962</p>
                             </div>
                         </div>
                         
                         <div class="group flex items-start space-x-4 p-4 rounded-2xl border border-fenix-gold/20 hover:border-fenix-gold/40 hover:bg-fenix-gold/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
+                            <div class="w-12 h-12 flex-shrink-0 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
                                 <i class="fas fa-envelope text-fenix-gold"></i>
                             </div>
-                            <div>
-                                <p class="text-gray-400 text-sm">Email</p>
-                                <p class="text-white font-medium">info@fenixedusystem.com</p>
+                            <div class="flex-1">
+                                <p class="text-gray-400 text-sm mb-2">Email</p>
+                                <p class="text-white font-medium text-xs mb-1">• fenix.edusystem@gmail.com</p>
+                                <p class="text-white font-medium text-xs mb-1">• robotics@fenixedusystem.in</p>
+                                <p class="text-white font-medium text-xs">• info@fenixedusystem.in</p>
                             </div>
                         </div>
                         
                         <div class="group flex items-start space-x-4 p-4 rounded-2xl border border-fenix-gold/20 hover:border-fenix-gold/40 hover:bg-fenix-gold/5 transition-all duration-300">
-                            <div class="w-12 h-12 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
+                            <div class="w-12 h-12 flex-shrink-0 bg-fenix-gold/20 rounded-xl flex items-center justify-center group-hover:bg-fenix-gold/30 transition-colors duration-300">
                                 <i class="fas fa-map-marker-alt text-fenix-gold"></i>
                             </div>
-                            <div>
-                                <p class="text-gray-400 text-sm">Address</p>
-                                <p class="text-white font-medium">123 Education St, Tech City</p>
+                            <div class="flex-1">
+                                <p class="text-gray-400 text-sm mb-1">Address</p>
+                                <p class="text-white font-medium text-sm">Vasantham complex, 3rd floor, Marthandam</p>
                             </div>
                         </div>
                     </div>
@@ -912,7 +908,7 @@
             <div class="border-t border-fenix-gold/20 pt-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p class="text-gray-400 text-center md:text-left text-sm md:text-base">
-                        &copy; 2024 FenixeduSystem. All rights reserved. 
+                        &copy; 2024 FenixeduSystem. All rights reserved. Powered by <span class="text-fenix-gold font-medium">way2repair</span>
                         <span class="text-fenix-gold font-medium block sm:inline">Transforming Education Through Technology.</span>
                     </p>
                     <div class="flex items-center space-x-2">
@@ -945,9 +941,9 @@
         window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
-                nav.classList.add('bg-white/90');
+                nav.classList.add('navbar-scrolled');
             } else {
-                nav.classList.remove('bg-white/90');
+                nav.classList.remove('navbar-scrolled');
             }
         });
 
